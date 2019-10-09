@@ -1,0 +1,6 @@
+#! /bin/bash
+docker build -t rtikid/python3-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf:3.7.4-1.16.5-1.2.2-1.4-7.6.7-2.2.2.1-0.9.3.1-1.0-2.1.10   -f Dockerfile-NeuronPython3 . 2>&1 | tee neuronpython3.log &
+docker build -t rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf:2.7.16-1.16.5-1.2.2-1.4-7.6.7-2.2.2.1-0.9.3.1-1.0-2.1.10  -f Dockerfile-NeuronPython2 . 2>&1 | tee neuronpython2.log &
+
+wait
+echo "DONE BOTH"
