@@ -10,8 +10,9 @@ RUN apt install -y --no-install-recommends build-essential g++ gfortran \
 	sudo git gsl-bin libgsl-dev file \
 	libzzip-dev libzlcore-data libzlcore-dev h5utils libhdf5-dev \
 	libblas-dev liblapack-dev \
-    ncurses-dev libreadline-dev openmpi-bin openmpi-common libopenmpi-dev \
-    libssl-dev openssl libffi-dev wget 
+	ncurses-dev libreadline-dev openmpi-bin openmpi-common libopenmpi-dev \
+	libssl-dev openssl libffi-dev wget  \
+	libsqlite3-dev libhdf5-dev libmagic-dev
 
 RUN mkdir /usr/local/x86_64 && cd /usr/local/x86_64 && ln -s ../bin && ln -s ../lib && ln -s ../lib64 && ln -s ../sbin && ln -s ../share && \
     [ -d "/usr/src" ]||{ mkdir /usr/src; } 
@@ -28,14 +29,17 @@ RUN wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py && rm get-pip.py
 
 # #### Install required packeges ####
-RUN pip install numpy && \
-	pip install scipy && \
-	pip install sympy && \
-	pip install argparse PyHamcrest && \
-    pip install brian2 && \
-    pip install --upgrade pyabf && \
-    pip install netpyne && \
-    pip install inspyred
+RUN pip install numpy
+RUN pip install scipy
+RUN pip install sympy
+RUN pip install argparse PyHamcrest
+RUN pip install brian2
+RUN pip install --upgrade -Iv pyabf==2.1.10
+RUN pip install netpyne
+RUN pip install inspyred 
+RUN pip install h5py
+RUN pip install psutil python-magic
+RUN pip install --upgrade matplotlib pandas
     
 
 # ### Installing NEURON ###
